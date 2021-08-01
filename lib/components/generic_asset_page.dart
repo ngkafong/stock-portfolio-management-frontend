@@ -2,20 +2,23 @@ import 'package:flutter/material.dart';
 
 class GenericAssetPage extends StatelessWidget {
   // This widget is the root of your application.
+
+  void _addAsset() {}
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('TODO'),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
- floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+      body: ListView(
+        children: [],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _addAsset,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
+    );
+  }
+}

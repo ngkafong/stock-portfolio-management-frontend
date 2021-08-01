@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pages/home.dart'
+import 'pages/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,11 +29,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
