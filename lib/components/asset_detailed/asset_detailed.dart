@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 class AssetDetailed extends StatefulWidget {
-  const AssetDetailed({Key? key}) : super(key: key);
+
+  final calculationResult;
+
+  const AssetDetailed(this.calculationResult);
 
   @override
   _AssetDetailedState createState() => _AssetDetailedState();
 }
 
 class _AssetDetailedState extends State<AssetDetailed> {
+
   var marketValueRow =
       Row(children: [const Text('Market Value'), Text('\$1234.56')]);
 
