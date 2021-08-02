@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
-import '../components/asset_detailed/asset_detailed.dart';
-import '../components/asset_list/asset_list.dart';
 
-class GenericAssetPage extends StatelessWidget {
+class GenericAddAssetPage extends StatelessWidget {
   // This widget is the root of your application.
 
   final String title;
 
-  final calculationResults;
-  final subAssets;
-  final transactions;
+  final List<Map> fields;
   final _addAsset;
 
-  const GenericAssetPage(
+  const GenericAddAssetPage(
     this.title,
-    this.calculationResults,
-    this.subAssets,
-    this.transactions,
+    this.fields,
     this._addAsset
   );
 
@@ -28,14 +22,12 @@ class GenericAssetPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          AssetDetailed([]),
-          AssetList([]),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addAsset,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        tooltip: 'Save',
+        child: Icon(Icons.save),
       ),
     );
   }

@@ -5,11 +5,21 @@ class StockPage extends StatelessWidget {
 
   const StockPage();
 
+  void _addTransaction(){
+
+  }
+
   @override
   Widget build(BuildContext context) {
 
     final args = ModalRoute.of(context)!.settings.arguments;
 
-    return GenericAssetPage('Stock Page');
+    return GenericAssetPage(
+      'Stock Page',
+      [],
+      [],
+      [],
+      _addTransaction
+    );
   }
 }

@@ -17,7 +17,10 @@ class _AssetList extends State<AssetList> {
 
     return Column(
       children:  widget.assetsResults.map((assetResults) {
-        return AssetListItem(assetResults);
+        return AssetListItem(
+          assetResults.name,
+          assetResults
+        );
       }).toList()
     );
   }

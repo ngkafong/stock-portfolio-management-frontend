@@ -5,11 +5,21 @@ class PortfolioPage extends StatelessWidget {
 
   const PortfolioPage();
 
+  void _addTransaction(){
+
+  }
+
   @override
   Widget build(BuildContext context) {
 
     final args = ModalRoute.of(context)!.settings.arguments;
 
-    return GenericAssetPage('Portfolio Page');
+    return GenericAssetPage(
+      'Portfolio Page',
+      [],
+      [],
+      [],
+      _addTransaction
+    );
   }
 }

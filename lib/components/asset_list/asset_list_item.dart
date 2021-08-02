@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class AssetListItem extends StatefulWidget {
 
-  final assetsResults;
-  const AssetListItem(this.assetsResults);
+  final String assetName;
+  final assetResults;
+
+  const AssetListItem(this.assetName, this.assetResults);
 
   @override
   _AssetListItem createState() => _AssetListItem();
@@ -11,24 +13,18 @@ class AssetListItem extends StatefulWidget {
 
 class _AssetListItem extends State<AssetListItem> {
 
-  var _marketValueRow =
-      Row(children: [const Text('Market Value'), Text('\$1234.56')]);
-
   var returnOverviewContainer =
       Column(
         children: [Text('+ 99.00'), Text('0.58%')]
       );
 
-  var chart = Column();
-
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      _marketValueRow,
-      Row(
-        children: [returnOverviewContainer, returnOverviewContainer]
-      ),
-      chart,
-    ]);
+    return Row(
+      children: [
+        Text(widget.assetName),
+        returnOverviewContainer
+      ]
+    );
   }
 }

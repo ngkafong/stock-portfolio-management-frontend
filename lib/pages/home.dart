@@ -5,8 +5,18 @@ class HomePage extends StatelessWidget {
 
   const HomePage();
 
+  void _addPortfolio(){
+
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GenericAssetPage('HomePage');
+    return GenericAssetPage(
+      'HomePage',
+      [],
+      [],
+      [],
+      _addPortfolio
+    );
   }
 }
