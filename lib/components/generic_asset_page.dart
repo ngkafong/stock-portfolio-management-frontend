@@ -29,7 +29,7 @@ class GenericAssetPage extends StatelessWidget {
       body: ListView(
         children: [
           AssetDetailed([]),
-          AssetList([]),
+          AssetList(subAssets),
         ],
       ),
       floatingActionButton: FloatingActionButton(

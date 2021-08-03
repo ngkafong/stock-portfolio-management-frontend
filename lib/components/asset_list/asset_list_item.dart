@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 class AssetListItem extends StatefulWidget {
 
   final String assetName;
+  final VoidCallback onPressed;
   final assetResults;
 
-  const AssetListItem(this.assetName, this.assetResults);
+  const AssetListItem(this.assetName, this.onPressed, this.assetResults);
 
   @override
   _AssetListItem createState() => _AssetListItem();
@@ -20,11 +21,14 @@ class _AssetListItem extends State<AssetListItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(widget.assetName),
-        returnOverviewContainer
-      ]
-    );
+    return InkWell (
+      onTap: widget.onPressed,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(widget.assetName),
+          returnOverviewContainer
+        ]
+    ));
   }
 }
