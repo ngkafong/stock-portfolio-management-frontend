@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/': (context) => const HomePage(),
-        '/portfolio': (context) => const PortfolioPage(),
-        '/stock': (context) => const StockPage()
+        HomePage.routeName: (context) => const HomePage(),
+        PortfolioPage.routeName: (context) => const PortfolioPage(),
+        StockPage.routeName: (context) => const StockPage()
       }
     );
   }

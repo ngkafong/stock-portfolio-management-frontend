@@ -3,6 +3,8 @@ import '../components/generic_asset_page.dart';
 
 class StockPage extends StatelessWidget {
 
+  static const routeName = '/stock';
+
   const StockPage();
 
   void _addTransaction(){

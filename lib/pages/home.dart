@@ -4,6 +4,8 @@ import 'portfolio.dart';
 
 class HomePage extends StatelessWidget {
 
+  static const routeName = '/' ;
+
   const HomePage();
 
   void _addPortfolio(){
