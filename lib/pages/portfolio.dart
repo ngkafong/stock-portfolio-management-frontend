@@ -18,14 +18,25 @@ class PortfolioPage extends StatelessWidget {
 
     final args = ModalRoute.of(context)!.settings.arguments as Map;
 
-    final String dataUrl = serverRootUrl + 'portfolios/' + args['portfolio_id'].toString();
+    final Uri dataUrl = Uri.parse(serverRootUrl + 'portfolios/' + args['portfolio_id'].toString());
 
-    return GenericAssetPage(
-      'Portfolio Page',
-      [],
-      [],
-      [],
-      _addTransaction
+    final Future response = http.get(dataUrl, headers:{'Accept': 'application/json'});
+
+    return FutureBuilder(
+      future: response,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+          return GenericAssetPage(
+            'Portfolio Page',
+            [],
+            [],
+            [],
+            _addTransaction,
+          );
+        } else {
+          return Text('Error');
+        }
+      }
     );
   }
 }
