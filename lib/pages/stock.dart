@@ -18,10 +18,9 @@ class StockPage extends StatelessWidget {
 
     return GenericAssetPage(
       'Stock Page',
-      [],
-      [],
-      [],
-      _addTransaction
+      _addTransaction,
+      {},
+      transactions: []
     );
   }
 }

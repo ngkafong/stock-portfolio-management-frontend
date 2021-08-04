@@ -32,10 +32,9 @@ class HomePage extends StatelessWidget {
 
     return GenericAssetPage(
       'HomePage',
-      [],
-      portfolios,
-      [],
-      _addPortfolio
+      _addPortfolio,
+      {},
+      subAssets: portfolios,
     );
   }
 }

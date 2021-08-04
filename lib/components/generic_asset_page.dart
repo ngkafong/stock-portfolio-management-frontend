@@ -14,10 +14,12 @@ class GenericAssetPage extends StatelessWidget {
 
   const GenericAssetPage(
     this.title,
+    this._addAsset,
     this.calculationResults,
-    this.subAssets,
-    this.transactions,
-    this._addAsset
+    {
+      this.subAssets = const [],
+      this.transactions = const []
+    }
   );
 
   @override
