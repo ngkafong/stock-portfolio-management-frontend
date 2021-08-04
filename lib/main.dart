@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stock_portfolio_management/pages/add_portfolio.dart';
+import 'package:stock_portfolio_management/pages/add_transaction.dart';
 import 'pages/home.dart';
 import 'pages/portfolio.dart';
 import 'pages/stock.dart';
@@ -20,7 +22,9 @@ class MyApp extends StatelessWidget {
       routes: {
         HomePage.routeName: (context) => const HomePage(),
         PortfolioPage.routeName: (context) => const PortfolioPage(),
-        StockPage.routeName: (context) => const StockPage()
+        StockPage.routeName: (context) => const StockPage(),
+        AddPortfolioPage.routeName: (context) => const AddPortfolioPage(),
+        AddTransactionPage.routeName: (context) => const AddTransactionPage(),
       }
     );
   }

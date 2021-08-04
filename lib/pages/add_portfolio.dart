@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import '../components/generic_add_asset_page.dart';
 
-class AddPortfolio extends StatelessWidget{
+class AddPortfolioPage extends StatelessWidget{
+
+  static const routeName = '/add-portfolio' ;
+
+  const AddPortfolioPage();
+
   @override
   Widget build(BuildContext context) {
 

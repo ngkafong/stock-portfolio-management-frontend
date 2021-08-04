@@ -21,8 +21,9 @@ class GenericAddAssetPage extends StatelessWidget {
         title: Text(title),
       ),
       body: ListView(
-        children: [
-        ],
+        children: fields.map((field) =>
+          Row()
+        ).toList(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addAsset,

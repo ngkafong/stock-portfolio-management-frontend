@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../components/generic_asset_page.dart';
+import '../constants.dart';
+import '../helper.dart';
+import 'add_transaction.dart';
 
 class StockPage extends StatelessWidget {
 
@@ -7,20 +10,46 @@ class StockPage extends StatelessWidget {
 
   const StockPage();
 
-  void _addTransaction(){
-
-  }
-
   @override
   Widget build(BuildContext context) {
 
-    final args = ModalRoute.of(context)!.settings.arguments;
+    final args = ModalRoute.of(context)!.settings.arguments as Map;
 
-    return GenericAssetPage(
-      'Stock Page',
-      _addTransaction,
-      {},
-      transactions: []
+    void _addTransaction(){
+      Navigator.pushNamed(
+        context,
+        AddTransactionPage.routeName,
+        arguments: {
+          'portfolio_id': args['portfolio_id'],
+          'stock_symbol': args['stock_symbol']
+        }
+      );
+    }
+
+    final Uri dataUrl = Uri.parse(
+      serverRootUrl +
+      'portfolio-stocks/' +
+      args['portfolio_id'].toString() +
+      ','+
+      args['stock_symbol']
+    );
+
+    final Future<Map> data = fetchJson(dataUrl);
+
+    return FutureBuilder(
+      future: data,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+          return GenericAssetPage(
+            'Stock Page',
+            _addTransaction,
+            snapshot.data['calculation_results'],
+            transactions: snapshot.data['transactions']
+          );
+        } else {
+          return CircularProgressIndicator();
+        }
+      }
     );
   }
 }

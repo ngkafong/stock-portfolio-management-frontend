@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stock_portfolio_management/pages/add_transaction.dart';
 import '../components/generic_asset_page.dart';
 import '../constants.dart';
 import 'package:http/http.dart' as http;
@@ -10,14 +11,20 @@ class PortfolioPage extends StatelessWidget {
 
   const PortfolioPage();
 
-  void _addTransaction(){
-
-  }
-
   @override
   Widget build(BuildContext context) {
 
     final args = ModalRoute.of(context)!.settings.arguments as Map;
+
+    void _addTransaction(){
+      Navigator.pushNamed(
+        context,
+        AddTransactionPage.routeName,
+        arguments: {
+          'portfolio_id': args['portfolio_id']
+        }
+      );
+    }
 
     final Uri dataUrl = Uri.parse(serverRootUrl + 'portfolios/' + args['portfolio_id'].toString());
 

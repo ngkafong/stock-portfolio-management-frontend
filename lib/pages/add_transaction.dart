@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import '../components/generic_add_asset_page.dart';
 
-class AddTransaction extends StatelessWidget{
+class AddTransactionPage extends StatelessWidget{
+
+  static const routeName = '/add-transaction';
+
+  const AddTransactionPage();
+
   @override
   Widget build(BuildContext context) {
 
