@@ -7,8 +7,8 @@ class GenericAssetPage extends StatelessWidget {
 
   final String title;
 
-  final calculationResults;
-  final subAssets;
+  final Map calculationResults;
+  final List subAssets;
   final transactions;
   final _addAsset;
 
@@ -24,15 +24,17 @@ class GenericAssetPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
       ),
       body: ListView(
+        padding: const EdgeInsets.all(8),
         children: [
-          AssetDetailed([]),
+          AssetDetailed(calculationResults),
           AssetList(subAssets),
-        ],
+        ]
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addAsset,

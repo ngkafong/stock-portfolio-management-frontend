@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/generic_asset_page.dart';
+import '../constants.dart';
+import '../helper.dart';
 import 'portfolio.dart';
 
 class HomePage extends StatelessWidget {
@@ -24,17 +26,30 @@ class HomePage extends StatelessWidget {
       });
     }
 
-    var portfolios = [
-      {'portfolio_id': 1, 'name': 'Portfolio 1', 'onPressed': () => _navigateToPortfolio(1) },
-      {'portfolio_id': 2, 'name': 'Portfolio 2', 'onPressed': () => _navigateToPortfolio(2) },
-      {'portfolio_id': 3, 'name': 'Portfolio 3', 'onPressed': () => _navigateToPortfolio(3) },
-    ];
+    final Uri dataUrl = Uri.parse(serverRootUrl + 'overall/');
 
-    return GenericAssetPage(
-      'HomePage',
-      _addPortfolio,
-      {},
-      subAssets: portfolios,
+    final Future<Map> data = fetchJson(dataUrl);
+
+    return FutureBuilder(
+      future: data,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+          return GenericAssetPage(
+            'HomePage',
+            _addPortfolio,
+            snapshot.data['calculation_results'],
+            subAssets: snapshot.data['portfolios'].map(
+              (portfolio) => {
+                'onPressed': () => _navigateToPortfolio(portfolio['portfolio_id']),
+                'name': portfolio['title'],
+                ...portfolio
+              }
+            ).toList(),
+          );
+        } else {
+          return CircularProgressIndicator();
+        }
+      }
     );
   }
 }

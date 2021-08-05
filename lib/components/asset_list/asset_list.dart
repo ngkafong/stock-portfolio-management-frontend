@@ -17,10 +17,13 @@ class _AssetList extends State<AssetList> {
 
     return Column(
       children:  widget.assets.map((asset) {
-        return AssetListItem(
-          asset['name'],
-          asset['onPressed'],
-          asset
+        return Container(
+          margin: EdgeInsets.all(2.0),
+          child: AssetListItem(
+            asset['name'],
+            asset['onPressed'],
+            asset['calculation_results']
+          )
         );
       }).toList()
     );

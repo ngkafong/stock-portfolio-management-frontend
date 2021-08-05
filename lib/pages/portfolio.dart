@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_portfolio_management/pages/add_transaction.dart';
+import 'package:stock_portfolio_management/pages/stock.dart';
 import '../components/generic_asset_page.dart';
 import '../constants.dart';
 import 'package:http/http.dart' as http;
@@ -26,6 +27,17 @@ class PortfolioPage extends StatelessWidget {
       );
     }
 
+    void _navigateToStock(String stock_symbol){
+      Navigator.pushNamed(
+        context,
+        StockPage.routeName,
+        arguments: {
+          'portfolio_id': args['portfolio_id'],
+          'stock_symbol': stock_symbol
+        }
+      );
+    }
+
     final Uri dataUrl = Uri.parse(serverRootUrl + 'portfolios/' + args['portfolio_id'].toString());
 
     final Future<Map> data = fetchJson(dataUrl);
@@ -37,13 +49,14 @@ class PortfolioPage extends StatelessWidget {
           return GenericAssetPage(
             'Portfolio Page',
             _addTransaction,
-            snapshot.data.calculation_result,
-            subAssets: snapshot.data.portfolio_stocks.map(
+            snapshot.data['calculation_results'],
+            subAssets: snapshot.data['portfolio_stocks'].map(
               (stock) => {
-                'name': stock['name'],
+                'name': stock['stock_symbol'],
+                'onPressed': () => _navigateToStock(stock['stock_symbol']),
                 ...stock
               }
-            ),
+            ).toList(),
           );
         } else {
           return CircularProgressIndicator();

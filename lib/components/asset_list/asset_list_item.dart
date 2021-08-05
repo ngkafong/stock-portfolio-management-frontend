@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:stock_portfolio_management/components/return_container.dart';
 
 class AssetListItem extends StatefulWidget {
 
-  final String assetName;
+  final String name;
   final VoidCallback onPressed;
-  final assetResults;
+  final Map calculationResults;
 
-  const AssetListItem(this.assetName, this.onPressed, this.assetResults);
+  const AssetListItem(this.name, this.onPressed, this.calculationResults);
 
   @override
   _AssetListItem createState() => _AssetListItem();
@@ -14,10 +15,6 @@ class AssetListItem extends StatefulWidget {
 
 class _AssetListItem extends State<AssetListItem> {
 
-  var returnOverviewContainer =
-      Column(
-        children: [Text('+ 99.00'), Text('0.58%')]
-      );
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +23,19 @@ class _AssetListItem extends State<AssetListItem> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(widget.assetName),
-          returnOverviewContainer
+          Column(
+            children: [
+              Text(widget.name),
+              Text('\$ ${widget.calculationResults['market_value'].last.toStringAsFixed(2)}')
+            ]
+          ),
+          Row(
+            children: [
+              ReturnContainer(widget.calculationResults['net_profit'], widget.calculationResults['money_weighted_return_rate']),
+              SizedBox(width:6),
+              ReturnContainer(widget.calculationResults['daily_profit'], widget.calculationResults['daily_profit_rate'])
+            ]
+          )
         ]
     ));
   }
