@@ -5,51 +5,43 @@ import '../helper.dart';
 import 'portfolio.dart';
 
 class HomePage extends StatelessWidget {
-
-  static const routeName = '/' ;
+  static const routeName = '/';
 
   const HomePage();
 
-  void _addPortfolio(){
-
-  }
+  void _addPortfolio() {}
 
   @override
   Widget build(BuildContext context) {
-
     void _navigateToPortfolio(int portfolio_id) {
-      Navigator.pushNamed(
-        context,
-        PortfolioPage.routeName,
-        arguments: {
-          'portfolio_id': portfolio_id
-      });
+      Navigator.pushNamed(context, PortfolioPage.routeName,
+          arguments: {'portfolio_id': portfolio_id});
     }
 
-    final Uri dataUrl = Uri.parse(serverRootUrl + 'overall/');
+    final Uri dataUrl = Uri.parse(serverRootUrl + 'overall');
 
     final Future<Map> data = fetchJson(dataUrl);
 
     return FutureBuilder(
-      future: data,
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (snapshot.hasData) {
-          return GenericAssetPage(
-            'HomePage',
-            _addPortfolio,
-            snapshot.data['calculation_results'],
-            subAssets: snapshot.data['portfolios'].map(
-              (portfolio) => {
-                'onPressed': () => _navigateToPortfolio(portfolio['portfolio_id']),
-                'name': portfolio['title'],
-                ...portfolio
-              }
-            ).toList(),
-          );
-        } else {
-          return CircularProgressIndicator();
-        }
-      }
-    );
+        future: data,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            return GenericAssetPage(
+              'HomePage',
+              _addPortfolio,
+              snapshot.data['calculation_results'],
+              subAssets: snapshot.data['portfolios']
+                  .map((portfolio) => {
+                        'onPressed': () =>
+                            _navigateToPortfolio(portfolio['portfolio_id']),
+                        'name': portfolio['title'],
+                        ...portfolio
+                      })
+                  .toList(),
+            );
+          } else {
+            return CircularProgressIndicator();
+          }
+        });
   }
 }
