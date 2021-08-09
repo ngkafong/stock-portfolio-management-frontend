@@ -13,14 +13,23 @@ class EditPortfolioPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    final args = ModalRoute.of(context)!.settings.arguments as Map;
+    final args = (ModalRoute.of(context)!.settings.arguments ?? {}) as Map;
 
     return Scaffold(
       appBar: AppBar(
         title: Text('New Portfolio'),
       ),
       body: ListView(
-        children: []
+        children: [
+          TextFormField(
+            decoration: const InputDecoration(
+              icon: Icon(Icons.title),
+              hintText: 'Title of the Portfolio',
+              labelText: 'Title *',
+            )
+          )
+        ],
+        padding: EdgeInsets.all(20)
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _savePortfolio,

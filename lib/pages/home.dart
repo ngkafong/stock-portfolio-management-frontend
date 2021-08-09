@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stock_portfolio_management/pages/edit_portfolio.dart';
 import 'package:stock_portfolio_management/pages/loading.dart';
 import '../components/generic_asset_page.dart';
 import '../constants.dart';
@@ -10,13 +11,15 @@ class HomePage extends StatelessWidget {
 
   const HomePage();
 
-  void _addPortfolio() {}
-
   @override
   Widget build(BuildContext context) {
     void _navigateToPortfolio(int portfolio_id) {
       Navigator.pushNamed(context, PortfolioPage.routeName,
           arguments: {'portfolio_id': portfolio_id});
+    }
+
+    void _addPortfolio() {
+      Navigator.pushNamed(context, EditPortfolioPage.routeName);
     }
 
     final Uri dataUrl = Uri.parse(serverRootUrl + 'overall');
