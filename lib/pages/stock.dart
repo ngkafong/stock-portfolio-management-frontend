@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:stock_portfolio_management/pages/loading.dart';
 import '../components/generic_asset_page.dart';
 import '../constants.dart';
 import '../helper.dart';
-import 'add_transaction.dart';
+import 'edit_transaction.dart';
 
 class StockPage extends StatelessWidget {
 
@@ -18,7 +19,7 @@ class StockPage extends StatelessWidget {
     void _addTransaction(){
       Navigator.pushNamed(
         context,
-        AddTransactionPage.routeName,
+        EditTransactionPage.routeName,
         arguments: {
           'portfolio_id': args['portfolio_id'],
           'stock_symbol': args['stock_symbol']
@@ -47,7 +48,7 @@ class StockPage extends StatelessWidget {
             transactions: snapshot.data['transactions']
           );
         } else {
-          return CircularProgressIndicator();
+          return LoadingPage();
         }
       }
     );

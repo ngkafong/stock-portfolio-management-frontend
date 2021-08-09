@@ -4,7 +4,10 @@ class LoadingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: CircularProgressIndicator()
+      appBar: AppBar(),
+      body: Center(
+        child: CircularProgressIndicator()
+      )
     );
   }
 }

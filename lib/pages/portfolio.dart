@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stock_portfolio_management/pages/add_transaction.dart';
+import 'package:stock_portfolio_management/pages/edit_transaction.dart';
 import 'package:stock_portfolio_management/pages/stock.dart';
 import '../components/generic_asset_page.dart';
 import '../constants.dart';
@@ -20,7 +20,7 @@ class PortfolioPage extends StatelessWidget {
     void _addTransaction(){
       Navigator.pushNamed(
         context,
-        AddTransactionPage.routeName,
+        EditTransactionPage.routeName,
         arguments: {
           'portfolio_id': args['portfolio_id']
         }

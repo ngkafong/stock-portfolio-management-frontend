@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stock_portfolio_management/pages/loading.dart';
 import '../components/generic_asset_page.dart';
 import '../constants.dart';
 import '../helper.dart';
@@ -40,7 +41,7 @@ class HomePage extends StatelessWidget {
                   .toList(),
             );
           } else {
-            return CircularProgressIndicator();
+            return LoadingPage();
           }
         });
   }
