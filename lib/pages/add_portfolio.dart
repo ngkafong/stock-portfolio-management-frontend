@@ -1,23 +1,33 @@
 import 'package:flutter/material.dart';
-import '../components/generic_add_asset_page.dart';
 
-class AddPortfolioPage extends StatelessWidget{
+class EditPortfolioPage extends StatelessWidget{
 
-  static const routeName = '/add-portfolio' ;
+  static const routeName = '/edit-portfolio';
 
-  const AddPortfolioPage();
+  const EditPortfolioPage();
+
+  void _savePortfolio(){
+
+  }
 
   @override
   Widget build(BuildContext context) {
 
-    const title = '';
-    const fields = [{}, {}];
+    final args = ModalRoute.of(context)!.settings.arguments as Map;
 
-    void _addPortfolio(){
-
-    }
-
-    return GenericAddAssetPage(title, fields, _addPortfolio);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('New Portfolio'),
+      ),
+      body: ListView(
+        children: []
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _savePortfolio,
+        tooltip: 'Save',
+        child: Icon(Icons.save),
+      ),
+    );
   }
 
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../components/generic_add_asset_page.dart';
 
 class AddTransactionPage extends StatelessWidget{
 
@@ -7,17 +6,25 @@ class AddTransactionPage extends StatelessWidget{
 
   const AddTransactionPage();
 
+  void _saveTransaction(){
+
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    const title = '';
-    const fields = [{}, {}];
-
-    void _addTransaction(){
-
-    }
-
-    return GenericAddAssetPage(title, fields, _addTransaction);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('New Transaction'),
+      ),
+      body: ListView(
+        children: []
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _saveTransaction,
+        tooltip: 'Save',
+        child: Icon(Icons.save),
+      ),
+    );
   }
 
 }

@@ -3,8 +3,8 @@ import 'package:stock_portfolio_management/pages/add_transaction.dart';
 import 'package:stock_portfolio_management/pages/stock.dart';
 import '../components/generic_asset_page.dart';
 import '../constants.dart';
-import 'package:http/http.dart' as http;
 import '../helper.dart';
+import 'loading.dart';
 
 class PortfolioPage extends StatelessWidget {
 
@@ -59,7 +59,7 @@ class PortfolioPage extends StatelessWidget {
             ).toList(),
           );
         } else {
-          return CircularProgressIndicator();
+          return LoadingPage();
         }
       }
     );
