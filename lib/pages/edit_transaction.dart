@@ -1,26 +1,34 @@
 import 'package:flutter/material.dart';
 
-class EditTransactionPage extends StatelessWidget{
+class EditTransactionPage extends StatefulWidget{
 
   static const routeName = '/edit-transaction';
 
   const EditTransactionPage();
 
-  void _saveTransaction(){
+  _EditTransactionPageState createState() => _EditTransactionPageState();
+}
 
-  }
+class _EditTransactionPageState extends State<EditTransactionPage> {
 
   @override
   Widget build(BuildContext context) {
 
     final args = (ModalRoute.of(context)!.settings.arguments ?? {}) as Map;
 
+    final _formKey = GlobalKey<FormState>();
+
+    void _saveTransaction(){
+
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('New Transaction'),
       ),
-      body: ListView(
-        children: [
+      body: Form(
+        key: _formKey,
+        child: ListView(children:[
           TextFormField(
             decoration: const InputDecoration(
               icon: Icon(Icons.trending_up),
@@ -35,8 +43,7 @@ class EditTransactionPage extends StatelessWidget{
               labelText: 'Date *',
             )
           )
-        ],
-        padding: EdgeInsets.all(20)
+        ]),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _saveTransaction,
